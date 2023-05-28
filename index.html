@@ -2,11 +2,16 @@
 <html lang="en" dir="ltr">
   <link rel="stylesheet" href="styles.css">
   <head>
+    <script type = "text/javascript" src="scrip.js"></script>
     <meta charset="utf-8">
     <title>Hello, this is a test</title>
   </head>
   <body>
-    <p>Bit two electric boogaloo you clicked on this didn't you</p>
-    <img src="[anger].JPG" alt="anger">
+    <label>Prefix: </label><input type="text" id="prefix" value="LED-{}-"><br>
+    <label>Pading: </label><input type="number" id="pading" value="2"><br>
+    <label>Amount: </label><input type="number" id="amount" value="100"><br>
+    <label>Numid: </label><input type="number" id="numid" value="300"><br>
+    <button onclick="main()">Calculate</button>
+    <pre id="demo"></pre>
   </body>
 </html>
