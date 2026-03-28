@@ -7,10 +7,32 @@
     <title>Stationers Hash Gen</title>
   </head>
   <body>
+    <h1>Stationeers Hash Gen</h1>
+    <p>This website is for the purpose of generating strings with specific <a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check">CRC32</a> hashes for the game <a href="https://store.steampowered.com/app/544550/Stationeers/">Stationeers</a><br>
+<br>
+The code generates a list of names for devices with hashes in order of incrementing values<br>
+How to use is as follows:<br>
+<br>
+`Prefix` is the text and stuff that comes before hand, the `{}` is replaced by zero padded id's of each device, you can remove the `{}` if you don't want to know what name has what ID I guess lol<br>
+`Pading` is the number of zeros to pad the ID that replaces the `{}`, ie `009` instead of `9`, just so names line up<br>
+`Amount` is the amount of names you want to generate, each name will have an ID from `0` to this amount in increments of `1`<br>
+`Offset` is the number added to the ID for every name. Think of it as a "Collection ID".<br>
+So if I have two sets of 100 lights, then they won't collide if they have different offsets, IE `300` -> `301` ... `399` for 100 names. For iterating in IC10, start at this number<br>
+<br>
+And at the very end of each name generated is six very specific alphanumeric characters that make the name have a CRC32 Hash (the one that stationeers uses) be the number you want.<br>
+<br>
+This websites default setup generates 100 names of `LED-{}-` with padding of 2 and offset of 300.<br>
+Example: `LED-39-2ppGcF` with a hash of `339`.<br>
+If you want to check the hash outside of the game, copy the name here: <a href="https://emn178.github.io/online-tools/crc/">https://emn178.github.io/online-tools/crc/</a><br>
+But thats in hex, so then you could convert it to decimal here: <a href="https://www.rapidtables.com/convert/number/hex-to-decimal.html">https://www.rapidtables.com/convert/number/hex-to-decimal.html</a><br>
+That's how Ive been checking the names give the right hashs out side of the game despite it being kinda annoying.<br>
+<br>
+In the end it seems to work. Last tested by me on 2026/03/28 in version `0.2.6228.27061`. Anyways heres the inputs.<br>
+- Erikan39<br></p>
     <label>Prefix: </label><input type="text" id="prefix" value="LED-{}-"><br>
     <label>Pading: </label><input type="number" id="pading" value="2"><br>
     <label>Amount: </label><input type="number" id="amount" value="100"><br>
-    <label>Numid: </label><input type="number" id="numid" value="300"><br>
+    <label>Offset: </label><input type="number" id="numid" value="300"><br>
     <button onclick="main()">Calculate</button>
     <pre id="demo"></pre>
   </body>
